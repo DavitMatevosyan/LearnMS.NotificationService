@@ -1,32 +1,27 @@
 ﻿using LearnMS.NotificationService.Contracts;
-using RabbitMQ.Client;
+using LearnMS.NotificationService.SMTP.Publisher.Initialize;
+using System.Net.Mail;
 using System.Text;
 
 namespace LearnMS.NotificationService.SMTP.Publisher.Services
 {
     public class SMTPPublisher : IPublisher
     {
+        private QueueFactory _queue;
+
+        public SMTPPublisher(QueueFactory queue)
+        {
+            _queue = queue;
+        }
+
         public async Task Publish()
         {
-            var factory = new ConnectionFactory { HostName = "localhost" };
-            using var connection = factory.CreateConnection();
-            using var channel = connection.CreateModel();
+            MailMessage mail = new MailMessage();
 
-            channel.QueueDeclare(queue: "hello",
-                                 durable: false,
-                                 exclusive: false,
-                                 autoDelete: false,
-                                 arguments: null);
 
-            const string message = "Hello World!";
-            var body = Encoding.UTF8.GetBytes(message); // todo: store in the noSQL db the data
-
-            channel.BasicPublish(exchange: string.Empty,
-                             routingKey: "hello",
-                             basicProperties: null,
-                             body: body);
-
-            // Stopped Here: https://www.rabbitmq.com/tutorials/tutorial-one-dotnet.html
+            
+            await _queue.Push(mail); // todo target, optional exchange names, headers, routingkey
+            
         }
     }
 }

@@ -15,4 +15,8 @@
     <ProjectReference Include="..\LearnMS.NotificationService.Contracts\LearnMS.NotificationService.Contracts.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Models\" />
+  </ItemGroup>
+
 </Project>
