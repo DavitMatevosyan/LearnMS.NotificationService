@@ -7,8 +7,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.5" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Middlewares\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LearnMS.NotificationService.Application\LearnMS.NotificationService.Application.csproj" />
+    <ProjectReference Include="..\LearnMS.NotificationService.Contracts\LearnMS.NotificationService.Contracts.csproj" />
+    <ProjectReference Include="..\LearnMS.NotificationService.Models\LearnMS.NotificationService.Models.csproj" />
   </ItemGroup>
 
 </Project>
