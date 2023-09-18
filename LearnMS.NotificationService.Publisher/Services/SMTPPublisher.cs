@@ -17,11 +17,8 @@ namespace LearnMS.NotificationService.SMTP.Publisher.Services
         public async Task Publish()
         {
             MailMessage mail = new MailMessage();
-
-
-            
-            await _queue.Push(mail); // todo target, optional exchange names, headers, routingkey
-            
+       
+            await _queue.Push(mail); // todo target, optional exchange names, headers, routingkey            
         }
     }
 }

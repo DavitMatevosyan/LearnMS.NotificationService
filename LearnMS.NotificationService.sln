@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33530.505
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearnMS.NotificationService.API", "LearnMS.NotificationService\LearnMS.NotificationService.API.csproj", "{613A1977-F5ED-4D55-B5C2-37FAC925AC47}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LearnMS.NotificationService.API", "LearnMS.NotificationService\LearnMS.NotificationService.API.csproj", "{613A1977-F5ED-4D55-B5C2-37FAC925AC47}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearnMS.NotificationService.SMTP.Publisher", "LearnMS.NotificationService.Publisher\LearnMS.NotificationService.SMTP.Publisher.csproj", "{7D402FAC-7EA5-44CA-906F-A5159513FA98}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LearnMS.NotificationService.SMTP.Publisher", "LearnMS.NotificationService.Publisher\LearnMS.NotificationService.SMTP.Publisher.csproj", "{7D402FAC-7EA5-44CA-906F-A5159513FA98}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearnMS.NotificationService.Contracts", "LearnMS.NotificationService.Contracts\LearnMS.NotificationService.Contracts.csproj", "{20D27CCA-7BA0-4FB6-AFA6-A3160F48AF94}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LearnMS.NotificationService.Contracts", "LearnMS.NotificationService.Contracts\LearnMS.NotificationService.Contracts.csproj", "{20D27CCA-7BA0-4FB6-AFA6-A3160F48AF94}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearnMS.NotificationService.Application", "LearnMS.NotificationService.Application\LearnMS.NotificationService.Application.csproj", "{6C0776BA-B6C9-49C0-8144-1484E14DC27A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LearnMS.NotificationService.Application", "LearnMS.NotificationService.Application\LearnMS.NotificationService.Application.csproj", "{6C0776BA-B6C9-49C0-8144-1484E14DC27A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearnMS.NotificationService.Models", "LearnMS.NotificationService.Models\LearnMS.NotificationService.Models.csproj", "{295A7DE3-BCC8-4D51-948E-993A68ADE800}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LearnMS.NotificationService.Models", "LearnMS.NotificationService.Models\LearnMS.NotificationService.Models.csproj", "{295A7DE3-BCC8-4D51-948E-993A68ADE800}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearnMS.NotificationService.ElasticSearchLogger", "LearnMS.NotificationService.ElasticSearchLogger\LearnMS.NotificationService.ElasticSearchLogger.csproj", "{FC7C5A99-C1EC-4426-AF8E-AC48D7BD9051}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{295A7DE3-BCC8-4D51-948E-993A68ADE800}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{295A7DE3-BCC8-4D51-948E-993A68ADE800}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{295A7DE3-BCC8-4D51-948E-993A68ADE800}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC7C5A99-C1EC-4426-AF8E-AC48D7BD9051}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC7C5A99-C1EC-4426-AF8E-AC48D7BD9051}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC7C5A99-C1EC-4426-AF8E-AC48D7BD9051}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC7C5A99-C1EC-4426-AF8E-AC48D7BD9051}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
