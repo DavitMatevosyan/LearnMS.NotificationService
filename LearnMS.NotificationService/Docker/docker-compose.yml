@@ -1,0 +1,12 @@
+services: 
+  rabbitmq3:
+    container_name: "learnMS_rabbitmq"
+    image: rabbitmq:3.12-management
+    environment:
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=admin1
+    ports:
+      # AMQP protocol port
+      - "5672:5672"
+      # http management UI
+      - "15672:15672"

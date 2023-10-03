@@ -1,24 +1,25 @@
-﻿using LearnMS.NotificationService.Contracts;
-using LearnMS.NotificationService.SMTP.Publisher.Initialize;
+﻿using LearnMS.NotificationService.Application.Dtos;
+using LearnMS.NotificationService.Contracts;
+using LearnMS.NotificationService.Models.MappingsHelper;
+using LearnMS.NotificationService.Models.Serializables;
 using System.Net.Mail;
-using System.Text;
 
 namespace LearnMS.NotificationService.SMTP.Publisher.Services
 {
     public class SMTPPublisher : IPublisher
     {
-        private QueueFactory _queue;
+        private IQueueFactory _queue;
 
-        public SMTPPublisher(QueueFactory queue)
+        public SMTPPublisher(IQueueFactory queue)
         {
             _queue = queue;
         }
 
-        public async Task Publish()
-        {
-            MailMessage mail = new MailMessage();
-       
-            await _queue.Push(mail); // todo target, optional exchange names, headers, routingkey            
+        public async Task PublishAsync(MailObjectDto message)
+        {   
+            var serializableMail = message.ToMailMessage();
+
+            await _queue.Push(serializableMail); // todo target, optional exchange names, headers, routingkey            
         }
     }
 }

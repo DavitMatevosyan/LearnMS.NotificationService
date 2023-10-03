@@ -1,6 +1,6 @@
 ﻿using LearnMS.NotificationService.Contracts;
+using LearnMS.NotificationService.Models.Serializables;
 using RabbitMQ.Client;
-using System.Net.Mail;
 using System.Text;
 using System.Text.Json;
 
@@ -17,7 +17,8 @@ namespace LearnMS.NotificationService.SMTP.Publisher.Initialize
         {
             _connectionFactory = new ConnectionFactory()
             {
-                HostName = "localhost", // move to appsettings
+                // HostName = "localhost", // move to appsettings
+                Uri = new Uri("amqp://admin:admin1@localhost:5672/")
             };
 
             _connection = _connectionFactory.CreateConnection();
@@ -46,11 +47,12 @@ namespace LearnMS.NotificationService.SMTP.Publisher.Initialize
         public void BindQueueExchange(string queue, string exchange, string routingKey, Dictionary<string, object>? arguments = null)
                 => _channel.QueueBind(queue, exchange, routingKey, arguments);
 
-        public async Task Push(MailMessage mail, string exchange = "ex-email", string routingKey = "basic-send", bool mandatory = false, IBasicProperties? basicProperties = null)
+        public async Task Push(SerializableMailMessage mail, string exchange = "ex-email", string routingKey = "basic-send", bool mandatory = false, IBasicProperties? basicProperties = null)
         {
             await Task.Run(() =>
             {
-                var bodyBytes = Encoding.UTF8.GetBytes(JsonSerializer.Serialize(mail));
+                var serializedMail = JsonSerializer.Serialize(mail);
+                var bodyBytes = Encoding.UTF8.GetBytes(serializedMail);
 
                 _channel.BasicPublish(exchange, routingKey, mandatory, basicProperties, bodyBytes);
             });

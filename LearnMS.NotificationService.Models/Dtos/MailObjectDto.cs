@@ -4,7 +4,7 @@ namespace LearnMS.NotificationService.Application.Dtos;
 
 public class MailObjectDto
 {
-    public MailAddressDto? From { get; set; }
+    public MailAddressDto From { get; set; } = null!;
     public MailAddressCollectionDto? To { get; set; }
     public MailAddressCollectionDto? Bcc { get; set; }
     public MailAddressCollectionDto? CC { get; set; }

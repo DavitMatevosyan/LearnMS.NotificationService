@@ -1,5 +1,5 @@
-﻿using RabbitMQ.Client;
-using System.Net.Mail;
+﻿using LearnMS.NotificationService.Models.Serializables;
+using RabbitMQ.Client;
 
 namespace LearnMS.NotificationService.Contracts
 {
@@ -45,6 +45,6 @@ namespace LearnMS.NotificationService.Contracts
         /// <param name="mandatory"></param>
         /// <param name="basicProperties"></param>
         /// <returns></returns>
-        Task Push(MailMessage mail, string exchange = "ex-email", string routingKey = "basic-send", bool mandatory = false, IBasicProperties? basicProperties = null);
+        Task Push(SerializableMailMessage mail, string exchange = "ex-email", string routingKey = "basic-send", bool mandatory = false, IBasicProperties? basicProperties = null);
     }
 }

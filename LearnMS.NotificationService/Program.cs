@@ -1,10 +1,12 @@
 using LearnMS.NotificationService.API.Middlewares;
 using LearnMS.NotificationService.Application.Dtos;
-using LearnMS.NotificationService.Application.Mappings;
 using LearnMS.NotificationService.Application.Services;
+using LearnMS.NotificationService.Contracts;
 using LearnMS.NotificationService.Contracts.Services;
+using LearnMS.NotificationService.SMTP.Publisher.Initialize;
+using LearnMS.NotificationService.SMTP.Publisher.Services;
+using Microsoft.AspNetCore.Mvc;
 using Serilog;
-using Serilog.Core;
 using Serilog.Sinks.Elasticsearch;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -31,7 +33,8 @@ var builder = WebApplication.CreateBuilder(args);
                 .ReadFrom.Configuration(context.Configuration);
         });
 
-    builder.Services.AddAutoMapper(typeof(MailObjectMappings));
+    builder.Services.AddScoped<IQueueFactory, QueueFactory>();
+    builder.Services.AddScoped<IPublisher, SMTPPublisher>();
 
     builder.Services.AddScoped<IEmailService, EmailService>();
 }
@@ -58,8 +61,8 @@ var app = builder.Build();
 
     app.UseHttpsRedirection();
 
-    app.MapPost("api/sendEmail", async (MailObjectDto mailObject, IEmailService emailService)
-        => await emailService.PushEmailAsync(mailObject));
+    app.MapPost("api/sendEmail", async ([FromBody] MailObjectDto mailObject, IEmailService emailService)
+        =>  await emailService.PushEmailAsync(mailObject));
 
     app.Run();
 }

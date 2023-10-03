@@ -4,5 +4,5 @@ namespace LearnMS.NotificationService.Contracts.Services;
 
 public interface IEmailService
 {
-    Task PushEmailAsync(MailObjectDto mailObject);
+    Task<int> PushEmailAsync(MailObjectDto mailObject);
 }

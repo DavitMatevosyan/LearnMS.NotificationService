@@ -43,6 +43,9 @@ namespace LearnMS.NotificationService.API.Middlewares
 
                 await context.Response.WriteAsJsonAsync(details);
             }
+
+            await context.Response.WriteAsJsonAsync(ex.InnerException?.ToString() ?? ex.ToString());
+
         }
     }
 }

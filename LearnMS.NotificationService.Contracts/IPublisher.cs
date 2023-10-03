@@ -1,7 +1,10 @@
-﻿namespace LearnMS.NotificationService.Contracts
+﻿using System.Net.Mail;
+using LearnMS.NotificationService.Application.Dtos;
+
+namespace LearnMS.NotificationService.Contracts
 {
     public interface IPublisher
     {
-        Task Publish();
+        Task PublishAsync(MailObjectDto message);
     }
 }

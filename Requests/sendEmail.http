@@ -1,0 +1,27 @@
+@host=http://localhost:5131
+
+POST {{host}}/api/sendEmail
+Content-Type: application/json
+
+{
+    "From": {
+        "Address":"daaveqiii+10@gmail.com",
+        "DisplayName": "Daaaav"
+    },
+    "To": [
+        {
+            "Address":"daaveqiii+120@gmail.com",
+            "DisplayName": "Daaaav receiver"
+        }
+    ],
+    "Bcc": null,
+    "CC": null,
+    "Priority": 0,
+    "Subject": "yeeexo",
+    "Body": "yexo bodyyy",
+    "IsBodyHtml": false,
+    "Attachments": null
+}
+
+
+### 
